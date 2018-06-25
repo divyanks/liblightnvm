@@ -24,24 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="liblightnvm 0.0.1 documentation" href="../index.html"/>
-        <link rel="next" title="Prerequisites" href="../prereqs/index.html"/>
-        <link rel="prev" title="User space I/O library for Open-Channel SSDs" href="../index.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Prerequisites" href="../prereqs/index.html" />
+    <link rel="prev" title="User space I/O library for Open-Channel SSDs" href="../index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -88,7 +83,8 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Quick Start</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build-changing-configuration-options">BUILD: Changing configuration options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#api-hello-open-channel-ssd">API: Hello Open-Channel SSD</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#compile-it">Compile it</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-it">Run it</a></li>
@@ -99,9 +95,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../prereqs/index.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/index.html">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/index.html">References</a></li>
 </ul>
 
@@ -114,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">liblightnvm</a>
@@ -122,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -153,7 +150,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/quick_start/index.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/quick_start/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,27 +165,53 @@
             
   <div class="section" id="quick-start">
 <span id="sec-quick-start"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
-<p>Assuming that you have met the <a class="reference internal" href="../prereqs/index.html#sec-prereqs"><span>Prerequisites</span></a>, and running Ubuntu Linux
-(16.04/xenial), then build and install liblightnvm for source:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/OpenChannelSSD/liblightnvm.git
+<p>Assuming that you have met the <a class="reference internal" href="../prereqs/index.html#sec-prereqs"><span class="std std-ref">Prerequisites</span></a>, and running Ubuntu Linux
+(16.04/xenial), then retrieve the source code, configure, build, and install
+it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve liblightnvm</span>
+git clone https://github.com/OpenChannelSSD/liblightnvm.git
 <span class="nb">cd</span> liblightnvm
-make dev
+
+<span class="c1"># Default configuration, build and install</span>
+make configure
+make
+sudo make install
 </pre></div>
 </div>
-<p>Or, install from deb-packages:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;deb https://dl.bintray.com/openchannelssd/debs xenial main&quot;</span> <span class="p">|</span> sudo tee -a /etc/apt/sources.list
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
-sudo apt-get update
-sudo apt-get install liblightnvm-dev liblightnvm-lib liblightnvm-cli
+<p>The above will configure liblightnvm, with default options, and install it by
+copying headers, libraries and binaries into system paths.</p>
+<div class="section" id="build-changing-configuration-options">
+<h2>BUILD: Changing configuration options<a class="headerlink" href="#build-changing-configuration-options" title="Permalink to this headline">¶</a></h2>
+<p>The configuration options are named <code class="docutils literal notranslate"><span class="pre">option_{on,off}</span></code>, consult the Makefile
+to see available options. Apply an option by typing it before the <code class="docutils literal notranslate"><span class="pre">configure</span></code>
+target. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change configuration, build and install</span>
+make spdk_on debug_on deb_on configure
+make
+sudo make install
 </pre></div>
 </div>
-<p>With the library installed, try the following examples of the <a class="reference internal" href="../capi/index.html#sec-c-api"><span>C API</span></a>
-and <a class="reference internal" href="../cli/index.html#sec-cli"><span>Command-Line Interface</span></a>.</p>
+<p>This will enable the SPDK backend, debugging, and build Debian packages. NOTE:
+<code class="docutils literal notranslate"><span class="pre">spdk_on</span></code> expects SPDK to be available in <code class="docutils literal notranslate"><span class="pre">/opt/spdk</span></code>.</p>
+<p>In case you enable build of Debian packages via <code class="docutils literal notranslate"><span class="pre">deb_on</span></code>, then you can modify
+the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> step to install/uninstall using the Debian package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change configuration, build and install via package</span>
+make spdk_on debug_on deb_on configure
+make
+sudo make install-deb
+
+<span class="c1"># Conveniently remove liblightnvm by uninstalling the Debian package</span>
+sudo make uninstall-deb
+</pre></div>
+</div>
+<p>With liblightnvm built and installed as you see fit, try the following examples
+of the <a class="reference internal" href="../capi/index.html#sec-c-api"><span class="std std-ref">C API</span></a> and <a class="reference internal" href="../cli/index.html#sec-cli"><span class="std std-ref">Command-Line Interface</span></a>.</p>
+</div>
 <div class="section" id="api-hello-open-channel-ssd">
 <h2>API: Hello Open-Channel SSD<a class="headerlink" href="#api-hello-open-channel-ssd" title="Permalink to this headline">¶</a></h2>
-<p>This &#8220;hello-world&#8221; example prints out device information of an Open-Channel
+<p>This “hello-world” example prints out device information of an Open-Channel
 SSD. Include the liblightnvm header in your C/C++ source:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;liblightnvm.h&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
@@ -207,61 +230,64 @@ SSD. Include the liblightnvm header in your C/C++ source:</p>
 </div>
 <div class="section" id="compile-it">
 <h3>Compile it<a class="headerlink" href="#compile-it" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>gcc hello.c -fopenmp -llightnvm -o hello
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc hello.c -fopenmp -llightnvm -o hello
 </pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If you compiled liblightnvm with SPDK, then add SPDK to the command
+above as well.</p>
 </div>
 </div>
 <div class="section" id="run-it">
 <h3>Run it<a class="headerlink" href="#run-it" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>chmod +x hello
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod +x hello
 ./hello
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>dev:
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dev_attr:
   verid: 0x02
-  be_id: 0x02
+  be_id: 0x01
   name: <span class="s1">&#39;nvme0n1&#39;</span>
   path: <span class="s1">&#39;/dev/nvme0n1&#39;</span>
   fd: <span class="m">3</span>
   ssw: <span class="m">12</span>
-  pmode: <span class="s1">&#39;DUAL&#39;</span>
+  mccap: <span class="m">00000000000000000000000000000001</span>
+  pmode: <span class="s1">&#39;SNGL&#39;</span>
   erase_naddrs_max: <span class="m">64</span>
   read_naddrs_max: <span class="m">64</span>
   write_naddrs_max: <span class="m">64</span>
   meta_mode: <span class="m">0</span>
   bbts_cached: <span class="m">0</span>
+  bbts_cached: <span class="m">00000000</span>
+  quirks: <span class="m">00000000</span>
 dev_geo:
-  nchannels: <span class="m">16</span>
-  nluns: <span class="m">8</span>
-  nplanes: <span class="m">2</span>
-  nblocks: <span class="m">1020</span>
-  npages: <span class="m">512</span>
-  nsectors: <span class="m">4</span>
-  page_nbytes: <span class="m">16384</span>
-  sector_nbytes: <span class="m">4096</span>
-  meta_nbytes: <span class="m">16</span>
-  tbytes: <span class="m">2190433320960</span>
-  tmbytes: <span class="m">2088960</span>
-dev_ppaf:
-  ch_off: <span class="m">25</span>
-  ch_len: <span class="m">04</span>
-  lun_off: <span class="m">22</span>
-  lun_len: <span class="m">03</span>
-  pl_off: <span class="m">02</span>
-  pl_len: <span class="m">01</span>
-  blk_off: <span class="m">12</span>
-  blk_len: <span class="m">10</span>
-  pg_off: <span class="m">03</span>
-  pg_len: <span class="m">09</span>
-  sec_off: <span class="m">00</span>
-  sec_len: <span class="m">02</span>
-dev_ppaf_mask:
-  ch:  <span class="s1">&#39;0000000000000000000000000000000000011110000000000000000000000000&#39;</span>
-  lun: <span class="s1">&#39;0000000000000000000000000000000000000001110000000000000000000000&#39;</span>
-  pl:  <span class="s1">&#39;0000000000000000000000000000000000000000000000000000000000000100&#39;</span>
-  blk: <span class="s1">&#39;0000000000000000000000000000000000000000001111111111000000000000&#39;</span>
-  pg:  <span class="s1">&#39;0000000000000000000000000000000000000000000000000000111111111000&#39;</span>
-  sec: <span class="s1">&#39;0000000000000000000000000000000000000000000000000000000000000011&#39;</span>
+  verid: 0x02
+  npugrp: <span class="m">8</span>
+  npunit: <span class="m">4</span>
+  nchunk: <span class="m">1474</span>
+  nsectr: <span class="m">6144</span>
+  nbytes: <span class="m">4096</span>
+  nbytes_oob: <span class="m">16</span>
+  tbytes: <span class="m">1187021586432</span>
+  tmbytes: <span class="m">1132032</span>
+dev_ppaf: ~
+dev_ppaf_mask: ~
+dev_lbaf:
+  pugrp: <span class="m">3</span>
+  punit: <span class="m">2</span>
+  chunk: <span class="m">11</span>
+  sectr: <span class="m">13</span>
+dev_lbaz:
+  pugrp: <span class="m">26</span>
+  punit: <span class="m">24</span>
+  chunk: <span class="m">13</span>
+  sectr: <span class="m">0</span>
+dev_lbam:
+  pugrp:  <span class="s1">&#39;0000000000000000000000000000000000011100000000000000000000000000&#39;</span>
+  punit:  <span class="s1">&#39;0000000000000000000000000000000000000011000000000000000000000000&#39;</span>
+  chunk:  <span class="s1">&#39;0000000000000000000000000000000000000000111111111110000000000000&#39;</span>
+  sectr:  <span class="s1">&#39;0000000000000000000000000000000000000000000000000001111111111111&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -270,75 +296,71 @@ dev_ppaf_mask:
 <h2>CLI: Hello Open-Channel SSD<a class="headerlink" href="#cli-hello-open-channel-ssd" title="Permalink to this headline">¶</a></h2>
 <p>Most of the C API is wrapped in a suite of command-line interface (CLI) tools.
 The equivalent of the above example is readily available from the
-<a class="reference internal" href="../cli/nvm_dev.html#sec-cli-nvm-dev"><span>nvm_dev</span></a> command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_dev info /dev/nvme0n1
+<a class="reference internal" href="../cli/nvm_dev.html#sec-cli-nvm-dev"><span class="std std-ref">nvm_dev</span></a> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_dev info /dev/nvme0n1
 </pre></div>
 </div>
 <p>Which should output information similar to:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Device information -- nvm_dev_pr</span>
-dev:
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Device information -- nvm_dev_pr</span>
+dev_attr:
   verid: 0x02
-  be_id: 0x02
+  be_id: 0x01
   name: <span class="s1">&#39;nvme0n1&#39;</span>
   path: <span class="s1">&#39;/dev/nvme0n1&#39;</span>
   fd: <span class="m">3</span>
   ssw: <span class="m">12</span>
-  pmode: <span class="s1">&#39;DUAL&#39;</span>
+  mccap: <span class="m">00000000000000000000000000000001</span>
+  pmode: <span class="s1">&#39;SNGL&#39;</span>
   erase_naddrs_max: <span class="m">64</span>
   read_naddrs_max: <span class="m">64</span>
   write_naddrs_max: <span class="m">64</span>
   meta_mode: <span class="m">0</span>
   bbts_cached: <span class="m">0</span>
+  bbts_cached: <span class="m">00000000</span>
+  quirks: <span class="m">00000000</span>
 dev_geo:
-  nchannels: <span class="m">16</span>
-  nluns: <span class="m">8</span>
-  nplanes: <span class="m">2</span>
-  nblocks: <span class="m">1020</span>
-  npages: <span class="m">512</span>
-  nsectors: <span class="m">4</span>
-  page_nbytes: <span class="m">16384</span>
-  sector_nbytes: <span class="m">4096</span>
-  meta_nbytes: <span class="m">16</span>
-  tbytes: <span class="m">2190433320960</span>
-  tmbytes: <span class="m">2088960</span>
-dev_ppaf:
-  ch_off: <span class="m">25</span>
-  ch_len: <span class="m">04</span>
-  lun_off: <span class="m">22</span>
-  lun_len: <span class="m">03</span>
-  pl_off: <span class="m">02</span>
-  pl_len: <span class="m">01</span>
-  blk_off: <span class="m">12</span>
-  blk_len: <span class="m">10</span>
-  pg_off: <span class="m">03</span>
-  pg_len: <span class="m">09</span>
-  sec_off: <span class="m">00</span>
-  sec_len: <span class="m">02</span>
-dev_ppaf_mask:
-  ch:  <span class="s1">&#39;0000000000000000000000000000000000011110000000000000000000000000&#39;</span>
-  lun: <span class="s1">&#39;0000000000000000000000000000000000000001110000000000000000000000&#39;</span>
-  pl:  <span class="s1">&#39;0000000000000000000000000000000000000000000000000000000000000100&#39;</span>
-  blk: <span class="s1">&#39;0000000000000000000000000000000000000000001111111111000000000000&#39;</span>
-  pg:  <span class="s1">&#39;0000000000000000000000000000000000000000000000000000111111111000&#39;</span>
-  sec: <span class="s1">&#39;0000000000000000000000000000000000000000000000000000000000000011&#39;</span>
+  verid: 0x02
+  npugrp: <span class="m">8</span>
+  npunit: <span class="m">4</span>
+  nchunk: <span class="m">1474</span>
+  nsectr: <span class="m">6144</span>
+  nbytes: <span class="m">4096</span>
+  nbytes_oob: <span class="m">16</span>
+  tbytes: <span class="m">1187021586432</span>
+  tmbytes: <span class="m">1132032</span>
+dev_ppaf: ~
+dev_ppaf_mask: ~
+dev_lbaf:
+  pugrp: <span class="m">3</span>
+  punit: <span class="m">2</span>
+  chunk: <span class="m">11</span>
+  sectr: <span class="m">13</span>
+dev_lbaz:
+  pugrp: <span class="m">26</span>
+  punit: <span class="m">24</span>
+  chunk: <span class="m">13</span>
+  sectr: <span class="m">0</span>
+dev_lbam:
+  pugrp:  <span class="s1">&#39;0000000000000000000000000000000000011100000000000000000000000000&#39;</span>
+  punit:  <span class="s1">&#39;0000000000000000000000000000000000000011000000000000000000000000&#39;</span>
+  chunk:  <span class="s1">&#39;0000000000000000000000000000000000000000111111111110000000000000&#39;</span>
+  sectr:  <span class="s1">&#39;0000000000000000000000000000000000000000000000000001111111111111&#39;</span>
 </pre></div>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">If the above does not suffice to get you started then have a look at the <a class="reference internal" href="../prereqs/index.html#sec-prereqs"><span>Prerequisites</span></a> for detailed information about what you need to setup an environment.</p>
+<p class="last">If the above does not suffice to get you started then have a look at the <a class="reference internal" href="../prereqs/index.html#sec-prereqs"><span class="std std-ref">Prerequisites</span></a> for detailed information about what you need to setup an environment.</p>
 </div>
-<p>With the basics in place, have a look at the <a class="reference internal" href="../background/index.html#sec-background"><span>Background</span></a> section on
-working with NAND media, follow the <a class="reference internal" href="../tutorial/index.html#sec-tutorial"><span>Tutorial Introduction</span></a> to see the background
-information put into practice, and dive deeper into <a class="reference internal" href="../capi/index.html#sec-c-api"><span>C API</span></a> and
-experiment with <a class="reference internal" href="../cli/index.html#sec-cli"><span>Command-Line Interface</span></a>.</p>
+<p>With the basics in place, have a look at the <a class="reference internal" href="../background/index.html#sec-background"><span class="std std-ref">Background</span></a> section on
+working with NAND media, follow the <a class="reference internal" href="../tutorial/index.html#sec-tutorial"><span class="std std-ref">Tutorial Introduction</span></a> to see the background
+information put into practice, and dive deeper into <a class="reference internal" href="../capi/index.html#sec-c-api"><span class="std std-ref">C API</span></a> and
+experiment with <a class="reference internal" href="../cli/index.html#sec-cli"><span class="std std-ref">Command-Line Interface</span></a>.</p>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -360,7 +382,7 @@ experiment with <a class="reference internal" href="../cli/index.html#sec-cli"><
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -379,10 +401,11 @@ experiment with <a class="reference internal" href="../cli/index.html#sec-cli"><
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.0.1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -391,19 +414,13 @@ experiment with <a class="reference internal" href="../cli/index.html#sec-cli"><
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

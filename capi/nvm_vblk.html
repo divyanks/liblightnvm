@@ -24,25 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="liblightnvm 0.0.1 documentation" href="../index.html"/>
-        <link rel="up" title="C API" href="index.html"/>
-        <link rel="next" title="nvm_cmd - Raw Commands" href="nvm_cmd.html"/>
-        <link rel="prev" title="nvm_bbt - Bad-Block-Table" href="nvm_bbt.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="nvm_bbt - Bad-Block-Table" href="nvm_bbt.html" />
+    <link rel="prev" title="nvm_cmd - Raw Commands" href="nvm_cmd.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -92,14 +86,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../prereqs/index.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/index.html">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="nvm_dev.html">nvm_dev - Device Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_geo.html">nvm_geo - Geometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_buf.html">nvm_buf - Buffer Allocation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_addr.html">nvm_addr - Addressing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nvm_bbt.html">nvm_bbt - Bad-Block-Table</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">nvm_vblk - Virtual Block</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nvm_cmd.html">nvm_cmd - Raw Commands</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">nvm_vblk - Virtual Block</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-vblk">nvm_vblk</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-vblk-erase">nvm_vblk_erase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-vblk-pread">nvm_vblk_pread</a></li>
@@ -121,12 +115,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#nvm-vblk-set-pos-write">nvm_vblk_set_pos_write</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="nvm_cmd.html">nvm_cmd - Raw Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nvm_bbt.html">nvm_bbt - Bad-Block-Table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
 <li class="toctree-l2"><a class="reference internal" href="header.html">Public Header</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/index.html">References</a></li>
 </ul>
 
@@ -139,7 +133,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">liblightnvm</a>
@@ -147,9 +141,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -180,7 +175,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/capi/nvm_vblk.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/capi/nvm_vblk.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -201,13 +196,13 @@
 <dt id="c.nvm_vblk">
 <span class="target" id="structnvm__vblk"></span><em class="property">struct </em><code class="descname">nvm_vblk</code><a class="headerlink" href="#c.nvm_vblk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Virtual block abstraction. </p>
-<p>Facilitates a libc-like read/write and a system-like <code class="docutils literal"><span class="pre">pread</span></code>/<code class="docutils literal"><span class="pre">pwrite</span></code> interface to perform I/O on a virtual block spanning multiple blocks of physical NVM.</p>
-<p>Consult the <code class="docutils literal"><span class="pre">nvm_vblk_alloc</span></code>, <code class="docutils literal"><span class="pre">nvm_vblk_alloc_line</span></code> for the different spans</p>
+<p>Facilitates a libc-like read/write and a system-like <code class="docutils literal notranslate"><span class="pre">pread</span></code>/<code class="docutils literal notranslate"><span class="pre">pwrite</span></code> interface to perform I/O on a virtual block spanning multiple blocks of physical NVM.</p>
+<p>Consult the <code class="docutils literal notranslate"><span class="pre">nvm_vblk_alloc</span></code>, <code class="docutils literal notranslate"><span class="pre">nvm_vblk_alloc_line</span></code> for the different spans</p>
 <p><dl class="docutils">
 <dt><strong>See</strong></dt>
-<dd><p class="first"><a class="reference internal" href="#liblightnvm_8h_1aa63a092d2f015a4645dab88c70ec6f10"><span>nvm_vblk_alloc</span></a> </p>
-<p class="last"><a class="reference internal" href="#liblightnvm_8h_1a2fe8c7aced82ea70540457c9ee725d69"><span>nvm_vblk_alloc_line</span></a> </p>
-</dd>
+<dd><a class="reference internal" href="#liblightnvm_8h_1aa63a092d2f015a4645dab88c70ec6f10"><span class="std std-ref">nvm_vblk_alloc</span></a> </dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#liblightnvm_8h_1a2fe8c7aced82ea70540457c9ee725d69"><span class="std std-ref">nvm_vblk_alloc_line</span></a> </dd>
 </dl>
 </p>
 </dd></dl>
@@ -223,10 +218,10 @@
 <dt><strong>Note</strong></dt>
 <dd>Erasing a vblk will reset internal position pointers</dd>
 <dt><strong>Return</strong></dt>
-<dd>On success, the number of bytes erased is returned. On error, -1 is returned and <code class="docutils literal"><span class="pre">errno</span></code> set to indicate the error. </dd>
+<dd>On success, the number of bytes erased is returned. On error, -1 is returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The virtual block to erase </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The virtual block to erase </li>
 </ul>
 </dd>
 </dl>
@@ -260,15 +255,15 @@
 <dd><p>Write to a virtual block at a given offset. </p>
 <p><dl class="docutils">
 <dt><strong>Note</strong></dt>
-<dd>buf must be aligned to device geometry, see struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span>nvm_geo</span></a> and nvm_buf_alloc count must be a multiple of min-size, see struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span>nvm_geo</span></a> offset must be a multiple of min-size, see struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span>nvm_geo</span></a> do not mix use of nvm_vblk_pwrite with nvm_vblk_write on the same virtual block</dd>
+<dd>buf must be aligned to device geometry, see struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span class="std std-ref">nvm_geo</span></a> and nvm_buf_alloc count must be a multiple of min-size, see struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span class="std std-ref">nvm_geo</span></a> offset must be a multiple of min-size, see struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span class="std std-ref">nvm_geo</span></a> do not mix use of nvm_vblk_pwrite with nvm_vblk_write on the same virtual block</dd>
 <dt><strong>Return</strong></dt>
-<dd>On success, the number of bytes written is returned. On error, -1 is returned and <code class="docutils literal"><span class="pre">errno</span></code> set to indicate the error. </dd>
+<dd>On success, the number of bytes written is returned. On error, -1 is returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The virtual block to write to </li>
-<li><code class="docutils literal"><span class="pre">buf</span></code>: Write content starting at buf </li>
-<li><code class="docutils literal"><span class="pre">count</span></code>: The number of bytes to write </li>
-<li><code class="docutils literal"><span class="pre">offset</span></code>: Start writing offset bytes within virtual block </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The virtual block to write to </li>
+<li><code class="docutils literal notranslate"><span class="pre">buf</span></code>: Write content starting at buf </li>
+<li><code class="docutils literal notranslate"><span class="pre">count</span></code>: The number of bytes to write </li>
+<li><code class="docutils literal notranslate"><span class="pre">offset</span></code>: Start writing offset bytes within virtual block </li>
 </ul>
 </dd>
 </dl>
@@ -284,14 +279,14 @@
 <dd><p>Write to a virtual block. </p>
 <p><dl class="docutils">
 <dt><strong>Note</strong></dt>
-<dd>buf must be aligned to device geometry, see struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span>nvm_geo</span></a> and nvm_buf_alloc count must be a multiple of min-size, see struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span>nvm_geo</span></a> do not mix use of nvm_vblk_pwrite with nvm_vblk_write on the same virtual block</dd>
+<dd>buf must be aligned to device geometry, see struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span class="std std-ref">nvm_geo</span></a> and nvm_buf_alloc count must be a multiple of min-size, see struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span class="std std-ref">nvm_geo</span></a> do not mix use of nvm_vblk_pwrite with nvm_vblk_write on the same virtual block</dd>
 <dt><strong>Return</strong></dt>
-<dd>On success, the number of bytes written is returned and vblk internal position is updated. On error, -1 is returned and <code class="docutils literal"><span class="pre">errno</span></code> set to indicate the error. </dd>
+<dd>On success, the number of bytes written is returned and vblk internal position is updated. On error, -1 is returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The virtual block to write to </li>
-<li><code class="docutils literal"><span class="pre">buf</span></code>: Write content starting at buf </li>
-<li><code class="docutils literal"><span class="pre">count</span></code>: The number of bytes to write </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The virtual block to write to </li>
+<li><code class="docutils literal notranslate"><span class="pre">buf</span></code>: Write content starting at buf </li>
+<li><code class="docutils literal notranslate"><span class="pre">count</span></code>: The number of bytes to write </li>
 </ul>
 </dd>
 </dl>
@@ -309,10 +304,10 @@
 <dt><strong>Note</strong></dt>
 <dd>Assumes that you have used nvm_vblk_write and now want to fill the remaining virtual block in order to meet block write-before-read constraints</dd>
 <dt><strong>Return</strong></dt>
-<dd>On success, the number of bytes padded is returned and internal position is updated. On error, -1 is returned and <code class="docutils literal"><span class="pre">errno</span></code> set to indicate the error. </dd>
+<dd>On success, the number of bytes padded is returned and internal position is updated. On error, -1 is returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The virtual block to pad </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The virtual block to pad </li>
 </ul>
 </dd>
 </dl>
@@ -328,12 +323,12 @@
 <dd><p>Allocate a virtual block, spanning a given set of physical blocks. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>On success, an opaque pointer to the initialized virtual block is returned. On error, NULL and <code class="docutils literal"><span class="pre">errno</span></code> set to indicate the error. </dd>
+<dd>On success, an opaque pointer to the initialized virtual block is returned. On error, NULL and <code class="docutils literal notranslate"><span class="pre">errno</span></code> set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
-<li><code class="docutils literal"><span class="pre">addrs</span></code>: Set of block-addresses forming the virtual block </li>
-<li><code class="docutils literal"><span class="pre">naddrs</span></code>: The number of addresses in the address-set</li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">addrs</span></code>: Set of block-addresses forming the virtual block </li>
+<li><code class="docutils literal notranslate"><span class="pre">naddrs</span></code>: The number of addresses in the address-set</li>
 </ul>
 </dd>
 </dl>
@@ -349,15 +344,15 @@
 <dd><p>Allocate a virtual block (spanning planes, channels, and LUNs) </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>On success, an opaque pointer to the initialized virtual block is returned. On error, NULL and <code class="docutils literal"><span class="pre">errno</span></code> set to indicate the error. </dd>
+<dd>On success, an opaque pointer to the initialized virtual block is returned. On error, NULL and <code class="docutils literal notranslate"><span class="pre">errno</span></code> set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
-<li><code class="docutils literal"><span class="pre">ch_bgn</span></code>: Beginning of the channel span, as inclusive index </li>
-<li><code class="docutils literal"><span class="pre">ch_end</span></code>: End of the channel span, as inclusive index </li>
-<li><code class="docutils literal"><span class="pre">lun_bgn</span></code>: Beginning of the LUN span, as inclusive index </li>
-<li><code class="docutils literal"><span class="pre">lun_end</span></code>: End of the LUN span, as inclusive index </li>
-<li><code class="docutils literal"><span class="pre">blk</span></code>: Block index</li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">ch_bgn</span></code>: Beginning of the channel span, as inclusive index </li>
+<li><code class="docutils literal notranslate"><span class="pre">ch_end</span></code>: End of the channel span, as inclusive index </li>
+<li><code class="docutils literal notranslate"><span class="pre">lun_bgn</span></code>: Beginning of the LUN span, as inclusive index </li>
+<li><code class="docutils literal notranslate"><span class="pre">lun_end</span></code>: End of the LUN span, as inclusive index </li>
+<li><code class="docutils literal notranslate"><span class="pre">blk</span></code>: Block index</li>
 </ul>
 </dd>
 </dl>
@@ -374,7 +369,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The virtual block to destroy </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The virtual block to destroy </li>
 </ul>
 </dd>
 </dl>
@@ -391,7 +386,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The entity to print information about </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The entity to print information about </li>
 </ul>
 </dd>
 </dl>
@@ -408,7 +403,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
 </ul>
 </dd>
 </dl>
@@ -425,7 +420,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
 </ul>
 </dd>
 </dl>
@@ -442,7 +437,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
 </ul>
 </dd>
 </dl>
@@ -459,7 +454,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
 </ul>
 </dd>
 </dl>
@@ -476,7 +471,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
 </ul>
 </dd>
 </dl>
@@ -493,7 +488,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The entity to retrieve information from </li>
 </ul>
 </dd>
 </dl>
@@ -509,11 +504,11 @@
 <dd><p>Set the read cursor position for the given virtual block. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>On success, 0 is returned. On error, -1 is returned and <code class="docutils literal"><span class="pre">errno</span></code> set to indicate the error </dd>
+<dd>On success, 0 is returned. On error, -1 is returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> set to indicate the error </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The vblk to change </li>
-<li><code class="docutils literal"><span class="pre">pos</span></code>: The new read cursor</li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The vblk to change </li>
+<li><code class="docutils literal notranslate"><span class="pre">pos</span></code>: The new read cursor</li>
 </ul>
 </dd>
 </dl>
@@ -529,11 +524,11 @@
 <dd><p>Set the write cursor position for the given virtual block. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>On success, 0 is returned. On error, -1 is returned and <code class="docutils literal"><span class="pre">errno</span></code> set to indicate the error </dd>
+<dd>On success, 0 is returned. On error, -1 is returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> set to indicate the error </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">vblk</span></code>: The vblk to change </li>
-<li><code class="docutils literal"><span class="pre">pos</span></code>: The new write cursor</li>
+<li><code class="docutils literal notranslate"><span class="pre">vblk</span></code>: The vblk to change </li>
+<li><code class="docutils literal notranslate"><span class="pre">pos</span></code>: The new write cursor</li>
 </ul>
 </dd>
 </dl>
@@ -545,18 +540,16 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="nvm_cmd.html" class="btn btn-neutral float-right" title="nvm_cmd - Raw Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nvm_bbt.html" class="btn btn-neutral float-right" title="nvm_bbt - Bad-Block-Table" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nvm_bbt.html" class="btn btn-neutral" title="nvm_bbt - Bad-Block-Table" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nvm_cmd.html" class="btn btn-neutral" title="nvm_cmd - Raw Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -569,7 +562,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -588,10 +581,11 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.0.1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -600,19 +594,13 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

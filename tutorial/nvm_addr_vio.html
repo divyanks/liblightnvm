@@ -24,25 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="liblightnvm 0.0.1 documentation" href="../index.html"/>
-        <link rel="up" title="Tutorial Introduction" href="index.html"/>
-        <link rel="next" title="Virtual Block" href="nvm_vblk.html"/>
-        <link rel="prev" title="Physical Addressing" href="nvm_addr.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Virtual Block" href="nvm_vblk.html" />
+    <link rel="prev" title="Physical Addressing" href="nvm_addr.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -92,10 +86,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../prereqs/index.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/index.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial Introduction</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="nvm_dev.html">Obtaining device information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_addr.html">Physical Addressing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Vectorized IO to NAND media</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vectorized IO to NAND media</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#erase-before-write">Erase before write</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#write">Write</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#minimum-write">Minimum write</a></li>
@@ -114,8 +110,6 @@
 <li class="toctree-l2"><a class="reference internal" href="nvm_bbt.html">Bad-Block-Table</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/index.html">References</a></li>
 </ul>
 
@@ -128,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">liblightnvm</a>
@@ -136,9 +130,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -169,7 +164,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tutorial/nvm_addr_vio.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorial/nvm_addr_vio.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -194,33 +189,33 @@ constraints to handle for IOs to NAND media to succeed.</p>
 <p>The first constraint to handle is that a block must be <strong>erased</strong> before it can
 be <strong>written</strong>. We do so by constructing block-addresses for all blocks within
 a plane:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr from_geo /dev/nvme0n1 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10</span> <span class="m">0</span> <span class="m">0</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_addr from_geo /dev/nvme0n1 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10</span> <span class="m">0</span> <span class="m">0</span>
 nvm_addr from_geo /dev/nvme0n1 <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">10</span> <span class="m">0</span> <span class="m">0</span>
 </pre></div>
 </div>
 <p>Yielding:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>0x000000000000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">0</span><span class="o">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>0x000000000000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">0</span><span class="o">}</span>
 
 0x000001000000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">1</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">0</span><span class="o">}</span>
 </pre></div>
 </div>
 <p>With the addresses we can now construct a single command with two addresses and
 send of the erase:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">NVM_CLI_PMODE</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> nvm_addr erase /dev/nvme0n1 0x000000000000000a 0x000001000000000a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">NVM_CLI_PMODE</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> nvm_addr erase /dev/nvme0n1 0x000000000000000a 0x000001000000000a
 </pre></div>
 </div>
 <p>On success, yielding:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_erase: {pmode: SNGL}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_erase: {pmode: SNGL}</span>
 0x000000000000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">0</span><span class="o">}</span>
 0x000001000000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">1</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">0</span><span class="o">}</span>
 </pre></div>
 </div>
 <p>On error, yielding:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>** nvm_addr_erase(...) : pmode(0x1)
-(0x000000000000000a){ ch(00), lun(00), pl(0), blk(0010), pg(000), sec(0) }
-(0x000001000000000a){ ch(00), lun(00), pl(1), blk(0010), pg(000), sec(0) }
-nvm_addr_erase: Input/output error
-nvm_ret { result(0xff), status(3) }
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">**</span> <span class="n">nvm_addr_erase</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">:</span> <span class="n">pmode</span><span class="p">(</span><span class="mh">0x1</span><span class="p">)</span>
+<span class="p">(</span><span class="mh">0x000000000000000a</span><span class="p">){</span> <span class="n">ch</span><span class="p">(</span><span class="mi">00</span><span class="p">),</span> <span class="n">lun</span><span class="p">(</span><span class="mi">00</span><span class="p">),</span> <span class="n">pl</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">blk</span><span class="p">(</span><span class="mi">0010</span><span class="p">),</span> <span class="n">pg</span><span class="p">(</span><span class="mi">000</span><span class="p">),</span> <span class="n">sec</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">(</span><span class="mh">0x000001000000000a</span><span class="p">){</span> <span class="n">ch</span><span class="p">(</span><span class="mi">00</span><span class="p">),</span> <span class="n">lun</span><span class="p">(</span><span class="mi">00</span><span class="p">),</span> <span class="n">pl</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">blk</span><span class="p">(</span><span class="mi">0010</span><span class="p">),</span> <span class="n">pg</span><span class="p">(</span><span class="mi">000</span><span class="p">),</span> <span class="n">sec</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">}</span>
+<span class="n">nvm_addr_erase</span><span class="p">:</span> <span class="n">Input</span><span class="o">/</span><span class="n">output</span> <span class="n">error</span>
+<span class="n">nvm_ret</span> <span class="p">{</span> <span class="n">result</span><span class="p">(</span><span class="mh">0xff</span><span class="p">),</span> <span class="n">status</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p>If an erase fails as above then it is because a block is bad. The
@@ -228,7 +223,7 @@ bad-block-table interface (nvm_bbt) is provided to communicate and update media
 state. Introduction to the bad-block-table is given in a later section.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">C API for performing erases using block-adressing is done with <code class="docutils literal"><span class="pre">nvm_addr_erase</span></code></p>
+<p class="last">C API for performing erases using block-adressing is done with <code class="docutils literal notranslate"><span class="pre">nvm_addr_erase</span></code></p>
 </div>
 </div>
 <div class="section" id="write">
@@ -238,8 +233,8 @@ granularity of a full flash page and contiguous within a block.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">C API for performing write using vectorized IO with addressing at
-sector-level is done using <code class="docutils literal"><span class="pre">nvm_addr_write</span></code>, note that the payload must
-be aligned to sector size, the helper function <code class="docutils literal"><span class="pre">nvm_buf_alloc</span></code> is
+sector-level is done using <code class="docutils literal notranslate"><span class="pre">nvm_addr_write</span></code>, note that the payload must
+be aligned to sector size, the helper function <code class="docutils literal notranslate"><span class="pre">nvm_buf_alloc</span></code> is
 provided for convenience</p>
 </div>
 <div class="section" id="minimum-write">
@@ -248,14 +243,14 @@ provided for convenience</p>
 bytes, a command satisfying the minimum-write constraint thus contains four
 addresses with a payload of 16384 bytes of data. The command can constructed
 via the CLI as:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr write /dev/nvme0n1 <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_addr write /dev/nvme0n1 <span class="se">\</span>
 0x000000000000000a 0x000000010000000a 0x000000020000000a 0x000000030000000a
 </pre></div>
 </div>
 <p>The CLI creates an arbitrary payload, so we do not concern us with the
 payload at this point.</p>
 <p>The result of the command is:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_write : {pmode: DUAL}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_write : {pmode: DUAL}</span>
 0x000000000000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">0</span><span class="o">}</span>
 0x000000010000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">1</span><span class="o">}</span>
 0x000000020000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">2</span><span class="o">}</span>
@@ -270,15 +265,15 @@ wrong? The issue in this case is that the command is constructed using
 plane-mode.</p>
 <p>This introduces an additional constraint that writes must be performed to the
 block accross all planes. One can choose to disable the plane-mode, which is
-done by setting environment var <code class="docutils literal"><span class="pre">NVM_CLI_PMODE=&quot;0&quot;</span></code> or by constructing a
+done by setting environment var <code class="docutils literal notranslate"><span class="pre">NVM_CLI_PMODE=&quot;0&quot;</span></code> or by constructing a
 command satisfying the plane-mode constraint:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr write /dev/nvme0n1 <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_addr write /dev/nvme0n1 <span class="se">\</span>
 0x000000000000000a 0x000000010000000a 0x000000020000000a 0x000000030000000a <span class="se">\</span>
 0x000001000000000a 0x000001010000000a 0x000001020000000a 0x000001030000000a
 </pre></div>
 </div>
 <p>Yielding without error:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_write : {pmode: DUAL}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_write : {pmode: DUAL}</span>
 0x000000000000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">0</span><span class="o">}</span>
 0x000000010000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">1</span><span class="o">}</span>
 0x000000020000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">2</span><span class="o">}</span>
@@ -301,7 +296,7 @@ retrieved from the device. In our case we can construct a command with 64
 addresses.</p>
 <p>Abiding to all of the above mentioned constraints a write command can be
 constructed as:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr write /dev/nvme0n1 <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_addr write /dev/nvme0n1 <span class="se">\</span>
 0x000000000001000a 0x000000010001000a 0x000000020001000a 0x000000030001000a <span class="se">\</span>
 0x000001000001000a 0x000001010001000a 0x000001020001000a 0x000001030001000a <span class="se">\</span>
 0x000000000002000a 0x000000010002000a 0x000000020002000a 0x000000030002000a <span class="se">\</span>
@@ -321,7 +316,7 @@ constructed as:</p>
 </pre></div>
 </div>
 <p>Successfully yielding:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_write : {pmode: DUAL}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_write : {pmode: DUAL}</span>
 0x000000000001000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">001</span>, sec: <span class="m">0</span><span class="o">}</span>
 0x000000010001000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">001</span>, sec: <span class="m">1</span><span class="o">}</span>
 0x000000020001000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">001</span>, sec: <span class="m">2</span><span class="o">}</span>
@@ -406,11 +401,11 @@ page in one command, the remaining eight pages in a second command. Thus we
 have 503 pages that need to be written before we can start reading.</p>
 <p>Specifying the 503 x nplanes x nsectors = 4024 addresses via the CLI is
 tedious, we will therefore take a sneak peak at virtual blocks and execute:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_vblk erase /dev/nvme0n1 0x000000000000000a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_vblk erase /dev/nvme0n1 0x000000000000000a
 nvm_vblk write /dev/nvme0n1 0x000000000000000a
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>vblk:
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vblk:
   dev: <span class="o">{</span>pmode: <span class="s1">&#39;DUAL&#39;</span><span class="o">}</span>
   nbytes: <span class="m">16777216</span>
   nmbytes: <span class="m">16</span>
@@ -437,34 +432,34 @@ written / closed and we can start reading from it.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">C API for performing write using vectorized IO with addressing at
-sector-level is done using <code class="docutils literal"><span class="pre">nvm_addr_read</span></code>, the received payload must be
-stored in a sector-aligned buffer, the helper function <code class="docutils literal"><span class="pre">nvm_buf_alloc</span></code> is
+sector-level is done using <code class="docutils literal notranslate"><span class="pre">nvm_addr_read</span></code>, the received payload must be
+stored in a sector-aligned buffer, the helper function <code class="docutils literal notranslate"><span class="pre">nvm_buf_alloc</span></code> is
 provided for convenience</p>
 </div>
 <div class="section" id="minimal-read">
 <h3>Minimal Read<a class="headerlink" href="#minimal-read" title="Permalink to this headline">¶</a></h3>
 <p>We can read a single sector:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr <span class="nb">read</span> /dev/nvme0n1 0x000000000000000a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_addr <span class="nb">read</span> /dev/nvme0n1 0x000000000000000a
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_read: {pmode: DUAL}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_read: {pmode: DUAL}</span>
 0x000000000000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">0</span><span class="o">}</span>
 </pre></div>
 </div>
-<p>The data read from device can be written to a file system using the <code class="docutils literal"><span class="pre">-o</span> <span class="pre">FILE</span></code>
+<p>The data read from device can be written to a file system using the <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">FILE</span></code>
 option:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr <span class="nb">read</span> /dev/nvme0n1 0x000000000000000a -o /tmp/dump.bin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_addr <span class="nb">read</span> /dev/nvme0n1 0x000000000000000a -o /tmp/dump.bin
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_read: {pmode: DUAL}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_read: {pmode: DUAL}</span>
 0x000000000000000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">000</span>, sec: <span class="m">0</span><span class="o">}</span>
 </pre></div>
 </div>
-<p>The payload is then available by inspection, e.g. with <code class="docutils literal"><span class="pre">hexdump</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>hexdump /tmp/dump.bin -C -n <span class="m">128</span>
+<p>The payload is then available by inspection, e.g. with <code class="docutils literal notranslate"><span class="pre">hexdump</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hexdump /tmp/dump.bin -C -n <span class="m">128</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">00000000</span>  <span class="m">41</span> <span class="m">42</span> <span class="m">43</span> <span class="m">44</span> <span class="m">45</span> <span class="m">46</span> <span class="m">47</span> <span class="m">48</span>  <span class="m">49</span> 4a 4b 4c 4d 4e 4f <span class="m">50</span>  <span class="p">|</span>ABCDEFGHIJKLMNOP<span class="p">|</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">00000000</span>  <span class="m">41</span> <span class="m">42</span> <span class="m">43</span> <span class="m">44</span> <span class="m">45</span> <span class="m">46</span> <span class="m">47</span> <span class="m">48</span>  <span class="m">49</span> 4a 4b 4c 4d 4e 4f <span class="m">50</span>  <span class="p">|</span>ABCDEFGHIJKLMNOP<span class="p">|</span>
 <span class="m">00000010</span>  <span class="m">51</span> <span class="m">52</span> <span class="m">53</span> <span class="m">54</span> <span class="m">55</span> <span class="m">56</span> <span class="m">57</span> <span class="m">58</span>  <span class="m">59</span> 5a <span class="m">41</span> <span class="m">42</span> <span class="m">43</span> <span class="m">44</span> <span class="m">45</span> <span class="m">46</span>  <span class="p">|</span>QRSTUVWXYZABCDEF<span class="p">|</span>
 <span class="m">00000020</span>  <span class="m">47</span> <span class="m">48</span> <span class="m">49</span> 4a 4b 4c 4d 4e  4f <span class="m">50</span> <span class="m">51</span> <span class="m">52</span> <span class="m">53</span> <span class="m">54</span> <span class="m">55</span> <span class="m">56</span>  <span class="p">|</span>GHIJKLMNOPQRSTUV<span class="p">|</span>
 <span class="m">00000030</span>  <span class="m">57</span> <span class="m">58</span> <span class="m">59</span> 5a <span class="m">41</span> <span class="m">42</span> <span class="m">43</span> <span class="m">44</span>  <span class="m">45</span> <span class="m">46</span> <span class="m">47</span> <span class="m">48</span> <span class="m">49</span> 4a 4b 4c  <span class="p">|</span>WXYZABCDEFGHIJKL<span class="p">|</span>
@@ -484,7 +479,7 @@ single command. Address-construction is equivalent.</p>
 <div class="section" id="non-contiguous-read">
 <h3>Non-Contiguous Read<a class="headerlink" href="#non-contiguous-read" title="Permalink to this headline">¶</a></h3>
 <p>Reading pages 500, 200, 0, and 6 across planes:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr <span class="nb">read</span> /dev/nvme0n1 <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_addr <span class="nb">read</span> /dev/nvme0n1 <span class="se">\</span>
 0x0000000001f4000a 0x0000000101f4000a 0x0000000201f4000a 0x0000000301f4000a <span class="se">\</span>
 0x0000010001f4000a 0x0000010101f4000a 0x0000010201f4000a 0x0000010301f4000a <span class="se">\</span>
 0x0000000000c8000a 0x0000000100c8000a 0x0000000200c8000a 0x0000000300c8000a <span class="se">\</span>
@@ -496,7 +491,7 @@ single command. Address-construction is equivalent.</p>
 </pre></div>
 </div>
 <p>Successfully yielding:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_read: {pmode: DUAL}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_read: {pmode: DUAL}</span>
 0x0000000001f4000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">500</span>, sec: <span class="m">0</span><span class="o">}</span>
 0x0000000101f4000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">500</span>, sec: <span class="m">1</span><span class="o">}</span>
 0x0000000201f4000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">500</span>, sec: <span class="m">2</span><span class="o">}</span>
@@ -542,9 +537,7 @@ planes and all sectors are read as in the example above.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -566,7 +559,7 @@ planes and all sectors are read as in the example above.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -585,10 +578,11 @@ planes and all sectors are read as in the example above.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.0.1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -597,19 +591,13 @@ planes and all sectors are read as in the example above.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

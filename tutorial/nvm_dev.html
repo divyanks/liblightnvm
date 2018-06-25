@@ -24,25 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="liblightnvm 0.0.1 documentation" href="../index.html"/>
-        <link rel="up" title="Tutorial Introduction" href="index.html"/>
-        <link rel="next" title="Physical Addressing" href="nvm_addr.html"/>
-        <link rel="prev" title="Tutorial Introduction" href="index.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Physical Addressing" href="nvm_addr.html" />
+    <link rel="prev" title="Tutorial Introduction" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -92,16 +86,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../prereqs/index.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/index.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial Introduction</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Obtaining device information</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Obtaining device information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_addr.html">Physical Addressing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_addr_vio.html">Vectorized IO to NAND media</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_vblk.html">Virtual Block</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_bbt.html">Bad-Block-Table</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/index.html">References</a></li>
 </ul>
 
@@ -114,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">liblightnvm</a>
@@ -122,9 +116,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,7 +150,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tutorial/nvm_dev.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorial/nvm_dev.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,11 +167,11 @@
 <h1>Obtaining device information<a class="headerlink" href="#obtaining-device-information" title="Permalink to this headline">¶</a></h1>
 <p>To begin with, knowing the physical geometry of a device is essential for
 working with physical addressing. Device information is obtained by invoking:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_dev info /dev/nvme0n1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_dev info /dev/nvme0n1
 </pre></div>
 </div>
 <p>Which will yield device information as shown below:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Device information -- nvm_dev_pr</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Device information -- nvm_dev_pr</span>
 dev:
   verid: 0x02
   be_id: 0x02
@@ -224,19 +219,17 @@ dev_ppaf_mask:
   sec: <span class="s1">&#39;0000000000000000000000000000000000000000000000000000000000000011&#39;</span>
 </pre></div>
 </div>
-<p>The parts involved from the C API are: <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> to obtain a device
-handle, <code class="docutils literal"><span class="pre">nvm_dev_pr</span></code> to produce the output above, and lastly
-<code class="docutils literal"><span class="pre">nvm_dev_close</span></code> to terminate the handle properly.</p>
+<p>The parts involved from the C API are: <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> to obtain a device
+handle, <code class="docutils literal notranslate"><span class="pre">nvm_dev_pr</span></code> to produce the output above, and lastly
+<code class="docutils literal notranslate"><span class="pre">nvm_dev_close</span></code> to terminate the handle properly.</p>
 <p>When using the C API, values and structures are retrieved using the attribute
-getters <code class="docutils literal"><span class="pre">nvm_dev_get_*</span></code> e.g. use <code class="docutils literal"><span class="pre">nvm_dev_get_geo</span></code> to obtain the geometry
+getters <code class="docutils literal notranslate"><span class="pre">nvm_dev_get_*</span></code> e.g. use <code class="docutils literal notranslate"><span class="pre">nvm_dev_get_geo</span></code> to obtain the geometry
 of a given device.</p>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -258,7 +251,7 @@ of a given device.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -277,10 +270,11 @@ of a given device.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.0.1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -289,19 +283,13 @@ of a given device.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

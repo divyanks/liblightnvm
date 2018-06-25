@@ -24,25 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="liblightnvm 0.0.1 documentation" href="../index.html"/>
-        <link rel="up" title="C API" href="index.html"/>
-        <link rel="next" title="nvm_geo - Geometry" href="nvm_geo.html"/>
-        <link rel="prev" title="C API" href="index.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="nvm_geo - Geometry" href="nvm_geo.html" />
+    <link rel="prev" title="C API" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -92,28 +86,40 @@
 <li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../prereqs/index.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/index.html">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C API</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">nvm_dev - Device Management</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">nvm_dev - Device Management</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev">nvm_dev</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-open">nvm_dev_open</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-close">nvm_dev_close</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-openf">nvm_dev_openf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-attr-pr">nvm_dev_attr_pr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-pr">nvm_dev_pr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-bbts-cached">nvm_dev_get_bbts_cached</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-be-id">nvm_dev_get_be_id</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-erase-naddrs-max">nvm_dev_get_erase_naddrs_max</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-fd">nvm_dev_get_fd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-geo">nvm_dev_get_geo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-lbaf">nvm_dev_get_lbaf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-mccap">nvm_dev_get_mccap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-meta-mode">nvm_dev_get_meta_mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-name">nvm_dev_get_name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-nsid">nvm_dev_get_nsid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-path">nvm_dev_get_path</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-pmode">nvm_dev_get_pmode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-ppaf">nvm_dev_get_ppaf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-ppaf-mask">nvm_dev_get_ppaf_mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-quirks">nvm_dev_get_quirks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-read-naddrs-max">nvm_dev_get_read_naddrs_max</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-verid">nvm_dev_get_verid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-write-naddrs-max">nvm_dev_get_write_naddrs_max</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-ws-min">nvm_dev_get_ws_min</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-get-ws-opt">nvm_dev_get_ws_opt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-set-bbts-cached">nvm_dev_set_bbts_cached</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-set-erase-naddrs-max">nvm_dev_set_erase_naddrs_max</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-set-meta-mode">nvm_dev_set_meta_mode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-set-pmode">nvm_dev_set_pmode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-dev-set-quirks">nvm_dev_set_quirks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-set-read-naddrs-max">nvm_dev_set_read_naddrs_max</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-dev-set-write-naddrs-max">nvm_dev_set_write_naddrs_max</a></li>
 </ul>
@@ -121,14 +127,14 @@
 <li class="toctree-l2"><a class="reference internal" href="nvm_geo.html">nvm_geo - Geometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_buf.html">nvm_buf - Buffer Allocation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_addr.html">nvm_addr - Addressing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nvm_bbt.html">nvm_bbt - Bad-Block-Table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nvm_vblk.html">nvm_vblk - Virtual Block</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_cmd.html">nvm_cmd - Raw Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nvm_vblk.html">nvm_vblk - Virtual Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nvm_bbt.html">nvm_bbt - Bad-Block-Table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
 <li class="toctree-l2"><a class="reference internal" href="header.html">Public Header</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/index.html">References</a></li>
 </ul>
 
@@ -141,7 +147,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">liblightnvm</a>
@@ -149,9 +155,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -182,7 +189,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/capi/nvm_dev.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/capi/nvm_dev.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -217,7 +224,7 @@
 <dd>A handle to the device </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev_path</span></code>: Path of the device to open e.g. &#8220;/dev/nvme0n1&#8221;</li>
+<li><code class="docutils literal notranslate"><span class="pre">dev_path</span></code>: Path of the device to open e.g. “/dev/nvme0n1”</li>
 </ul>
 </dd>
 </dl>
@@ -234,7 +241,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -253,8 +260,26 @@
 <dd>A handle to the device </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev_path</span></code>: Path of the device to open e.g. &#8220;/dev/nvme0n1&#8221; </li>
-<li><code class="docutils literal"><span class="pre">flags</span></code>: Flags for opening device in different modes</li>
+<li><code class="docutils literal notranslate"><span class="pre">dev_path</span></code>: Path of the device to open e.g. “/dev/nvme0n1” </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: Flags for opening device in different modes</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-attr-pr">
+<h2>nvm_dev_attr_pr<a class="headerlink" href="#nvm-dev-attr-pr" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_attr_pr">
+<span class="target" id="liblightnvm_8h_1a3cc4daae722afb47925fa830fb9b3bcc"></span>void <code class="descname">nvm_dev_attr_pr</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_attr_pr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints misc. </p>
+<p>device attribute associated with the given handle</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -271,7 +296,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -290,7 +315,7 @@
 <dd>0 = cache disabled 1 = cache enabled</dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -307,7 +332,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -325,7 +350,26 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-get-fd">
+<h2>nvm_dev_get_fd<a class="headerlink" href="#nvm-dev-get-fd" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_get_fd">
+<span class="target" id="liblightnvm_8h_1a89944f459fdad2b63528b4cc7003c0dc"></span>int <code class="descname">nvm_dev_get_fd</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_fd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the file-descriptor associated with the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>On success, file descriptor is returned </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -341,12 +385,50 @@
 <dd><p>Returns the geometry of the given device. </p>
 <p><dl class="docutils">
 <dt><strong>Note</strong></dt>
-<dd>See struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span>nvm_geo</span></a> for the specifics of the returned geometry</dd>
+<dd>See struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span class="std std-ref">nvm_geo</span></a> for the specifics of the returned geometry</dd>
 <dt><strong>Return</strong></dt>
-<dd>The geometry (struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span>nvm_geo</span></a>) of given device handle </dd>
+<dd>The geometry (struct <a class="reference internal" href="nvm_geo.html#structnvm__geo"><span class="std std-ref">nvm_geo</span></a>) of given device handle </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-get-lbaf">
+<h2>nvm_dev_get_lbaf<a class="headerlink" href="#nvm-dev-get-lbaf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_get_lbaf">
+<span class="target" id="liblightnvm_8h_1af1fd7a072e78da3c393c11ec27407579"></span>const struct nvm_spec_lbaf* <code class="descname">nvm_dev_get_lbaf</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_lbaf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the LBA format of the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>On success, LBA format is returned </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-get-mccap">
+<h2>nvm_dev_get_mccap<a class="headerlink" href="#nvm-dev-get-mccap" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_get_mccap">
+<span class="target" id="liblightnvm_8h_1a7afc9f3aa3eb8feac8977d2689527be8"></span>uint32_t <code class="descname">nvm_dev_get_mccap</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_mccap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the media-controller capabilities mask of the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>On success, capabilities mask is returned </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -359,13 +441,32 @@
 <dl class="function">
 <dt id="c.nvm_dev_get_meta_mode">
 <span class="target" id="liblightnvm_8h_1a2f4483e4a3e5b125d13ccb290d311c97"></span>int <code class="descname">nvm_dev_get_meta_mode</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_meta_mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the &#8216;meta-mode&#8217; of the given device. </p>
+<dd><p>Returns the ‘meta-mode’ of the given device. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>On success, meta-mode is returned </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-get-name">
+<h2>nvm_dev_get_name<a class="headerlink" href="#nvm-dev-get-name" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_get_name">
+<span class="target" id="liblightnvm_8h_1af414fb32da3f2ef07b2c09f7109e30ec"></span>const char* <code class="descname">nvm_dev_get_name</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name associated with the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>On success, string is returned. On error, NULL is returned. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -384,7 +485,26 @@
 <dd>On success, NVME namespace identifier is returned. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-get-path">
+<h2>nvm_dev_get_path<a class="headerlink" href="#nvm-dev-get-path" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_get_path">
+<span class="target" id="liblightnvm_8h_1a949c7cee0c3e437c36306a3d04d01ad8"></span>const char* <code class="descname">nvm_dev_get_path</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the path associated with the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>On success, string is returned. On error, NULL is returned. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -403,7 +523,64 @@
 <dd>On success, pmode flag is returned </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-get-ppaf">
+<h2>nvm_dev_get_ppaf<a class="headerlink" href="#nvm-dev-get-ppaf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_get_ppaf">
+<span class="target" id="liblightnvm_8h_1ae9143df11505da4acafcf6629c57a7f5"></span>const struct nvm_spec_ppaf_nand* <code class="descname">nvm_dev_get_ppaf</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_ppaf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the ppa-format of the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>On success, ppa-format is returned </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-get-ppaf-mask">
+<h2>nvm_dev_get_ppaf_mask<a class="headerlink" href="#nvm-dev-get-ppaf-mask" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_get_ppaf_mask">
+<span class="target" id="liblightnvm_8h_1a1dd1c7f21764a09622210b1df9832181"></span>const struct nvm_spec_ppaf_nand_mask* <code class="descname">nvm_dev_get_ppaf_mask</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_ppaf_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the ppa-format mask of the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>On success, ppa-format mask is returned </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-get-quirks">
+<h2>nvm_dev_get_quirks<a class="headerlink" href="#nvm-dev-get-quirks" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_get_quirks">
+<span class="target" id="liblightnvm_8h_1af043aab951556042e8e36f6b15bc23e5"></span>int <code class="descname">nvm_dev_get_quirks</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_quirks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mask of quirks for the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>On success, quirk mask is returned </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -420,7 +597,7 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -439,7 +616,7 @@
 <dd>On success, verid is returned </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
 </ul>
 </dd>
 </dl>
@@ -456,7 +633,45 @@
 <p><dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-get-ws-min">
+<h2>nvm_dev_get_ws_min<a class="headerlink" href="#nvm-dev-get-ws-min" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_get_ws_min">
+<span class="target" id="liblightnvm_8h_1a582532a81352ff61f9a29d16888fba8c"></span>int <code class="descname">nvm_dev_get_ws_min</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_ws_min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the minimum write size, in number of sectors, for the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The spec. 2.0 defined minimum write size, in sectors. An equivalent value for spec. 1.2 </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-get-ws-opt">
+<h2>nvm_dev_get_ws_opt<a class="headerlink" href="#nvm-dev-get-ws-opt" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_get_ws_opt">
+<span class="target" id="liblightnvm_8h_1a5f405b1b031e99813949e9b5a6caf09c"></span>int <code class="descname">nvm_dev_get_ws_opt</code><span class="sig-paren">(</span>const struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_get_ws_opt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the optimal write size, in number of sectors, for the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The spec. 2.0 defined optimal write size, in sectors, an equivalent value for spec. 1.2 </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code></li>
 </ul>
 </dd>
 </dl>
@@ -475,8 +690,8 @@
 <dd>0 on success, -1 on error and errno set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
-<li><code class="docutils literal"><span class="pre">bbts_cached</span></code>: 1 = cache enabled, 0 = cache disabled</li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">bbts_cached</span></code>: 1 = cache enabled, 0 = cache disabled</li>
 </ul>
 </dd>
 </dl>
@@ -495,8 +710,8 @@
 <dd>0 on success, -1 on error and errno set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
-<li><code class="docutils literal"><span class="pre">naddrs</span></code>: The maximum</li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">naddrs</span></code>: The maximum</li>
 </ul>
 </dd>
 </dl>
@@ -509,15 +724,15 @@
 <dl class="function">
 <dt id="c.nvm_dev_set_meta_mode">
 <span class="target" id="liblightnvm_8h_1a718098e61ba492a1750321480a5fe382"></span>int <code class="descname">nvm_dev_set_meta_mode</code><span class="sig-paren">(</span>struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em>, int<em>&nbsp;meta_mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_set_meta_mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the default &#8216;meta-mode&#8217; of the given device. </p>
-<p>The meta-mode is a setting used by the <a class="reference internal" href="nvm_vblk.html#structnvm__vblk"><span>nvm_vblk</span></a> interface to write pseudo-meta data to the out-of-bound area.</p>
+<dd><p>Set the default ‘meta-mode’ of the given device. </p>
+<p>The meta-mode is a setting used by the <a class="reference internal" href="nvm_vblk.html#structnvm__vblk"><span class="std std-ref">nvm_vblk</span></a> interface to write pseudo-meta data to the out-of-bound area.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>On success, 0 is returned. On error, -1 is returned and errno set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
-<li><code class="docutils literal"><span class="pre">meta_mode</span></code>: One of: NVM_META_MODE_[NONE|ALPHA|CONST]</li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">meta_mode</span></code>: One of: NVM_META_MODE_[NONE|ALPHA|CONST]</li>
 </ul>
 </dd>
 </dl>
@@ -536,8 +751,28 @@
 <dd>0 on success, -1 on error and errno set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
-<li><code class="docutils literal"><span class="pre">pmode</span></code>: Default plane-mode</li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">pmode</span></code>: Default plane-mode</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-dev-set-quirks">
+<h2>nvm_dev_set_quirks<a class="headerlink" href="#nvm-dev-set-quirks" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_dev_set_quirks">
+<span class="target" id="liblightnvm_8h_1a870e57f2b29bde5434f470c01b3b7506"></span>int <code class="descname">nvm_dev_set_quirks</code><span class="sig-paren">(</span>struct  <a class="reference internal" href="#c.nvm_dev" title="nvm_dev">nvm_dev</a>  *<em>&nbsp;dev</em>, int<em>&nbsp;quirks</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_dev_set_quirks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the default plane-mode for the given device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>0 on success, -1 on error and errno set to indicate the error. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">quirks</span></code>: Mask of <code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">nvm_quirks</span></code></li>
 </ul>
 </dd>
 </dl>
@@ -556,8 +791,8 @@
 <dd>0 on success, -1 on error and errno set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
-<li><code class="docutils literal"><span class="pre">naddrs</span></code>: The maximum</li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">naddrs</span></code>: The maximum</li>
 </ul>
 </dd>
 </dl>
@@ -576,8 +811,8 @@
 <dd>0 on success, -1 on error and errno set to indicate the error. </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal"><span class="pre">nvm_dev_open</span></code> </li>
-<li><code class="docutils literal"><span class="pre">naddrs</span></code>: The maximum</li>
+<li><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Device handle obtained with <code class="docutils literal notranslate"><span class="pre">nvm_dev_open</span></code> </li>
+<li><code class="docutils literal notranslate"><span class="pre">naddrs</span></code>: The maximum</li>
 </ul>
 </dd>
 </dl>
@@ -589,9 +824,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -613,7 +846,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -632,10 +865,11 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.0.1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -644,19 +878,13 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
