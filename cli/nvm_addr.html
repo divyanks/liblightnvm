@@ -26,8 +26,10 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="next" title="nvm_vblk" href="nvm_vblk.html" />
-    <link rel="prev" title="nvm_bbt" href="nvm_bbt.html" /> 
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="nvm_cmd" href="nvm_cmd.html" />
+    <link rel="prev" title="nvm_dev" href="nvm_dev.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -84,24 +86,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../prereqs/index.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/index.html">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Command-Line Interface</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="nvm_env.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_dev.html">nvm_dev</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nvm_bbt.html">nvm_bbt</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">nvm_addr</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">nvm_addr</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#address-formats">Address Formats</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#generic-format">Generic Format</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device-format">Device Format</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#submitting-io">Submitting IO</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="nvm_cmd.html">nvm_cmd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_vblk.html">nvm_vblk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nvm_bbt.html">nvm_bbt</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/index.html">References</a></li>
 </ul>
 
@@ -156,7 +158,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/cli/nvm_addr.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cli/nvm_addr.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -171,52 +173,48 @@
             
   <div class="section" id="nvm-addr">
 <span id="sec-cli-nvm-addr"></span><h1>nvm_addr<a class="headerlink" href="#nvm-addr" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>NVM address <span class="o">(</span>nvm_addr_*<span class="o">)</span> -- Ver <span class="o">{</span> major<span class="o">(</span><span class="m">0</span><span class="o">)</span>, minor<span class="o">(</span><span class="m">0</span><span class="o">)</span>, patch<span class="o">(</span><span class="m">1</span><span class="o">)</span> <span class="o">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>NVM address <span class="o">(</span>nvm_addr_*<span class="o">)</span> -- Ver <span class="o">{</span> major<span class="o">(</span><span class="m">18</span><span class="o">)</span>, minor<span class="o">(</span><span class="m">6</span><span class="o">)</span>, patch<span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="o">}</span>
 
-Construct / convert addresses and perform vector IO
+Construct and convert addresses
 
 Usage:
- nvm_addr        erase dev_path 0xADDR <span class="o">[</span>0xADDR...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
- nvm_addr        write dev_path 0xADDR <span class="o">[</span>0xADDR...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span> <span class="o">[</span>-i FILE<span class="o">]</span>
- nvm_addr     write_wm dev_path 0xADDR <span class="o">[</span>0xADDR...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span> <span class="o">[</span>-i FILE<span class="o">]</span>
- nvm_addr         <span class="nb">read</span> dev_path 0xADDR <span class="o">[</span>0xADDR...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span> <span class="o">[</span>-o FILE<span class="o">]</span>
- nvm_addr      read_wm dev_path 0xADDR <span class="o">[</span>0xADDR...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span> <span class="o">[</span>-o FILE<span class="o">]</span>
- nvm_addr     from_geo dev_path ch lun pl blk pg sec <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
- nvm_addr     from_hex dev_path 0xADDR <span class="o">[</span>0xADDR...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
+ nvm_addr   s12_to_gen dev_path ch lun blk pl pg sec <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
+ nvm_addr   s20_to_gen dev_path pugrp punit chunk sectr <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
  nvm_addr      gen2dev dev_path 0xADDR <span class="o">[</span>0xADDR...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
  nvm_addr      gen2lba dev_path 0xADDR <span class="o">[</span>0xADDR...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
  nvm_addr      gen2off dev_path 0xADDR <span class="o">[</span>0xADDR...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
+ nvm_addr      gen2lpo dev_path 0xADDR <span class="o">[</span>0xADDR...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
  nvm_addr      dev2gen dev_path 0xVAL <span class="o">[</span>0xVAL...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
  nvm_addr      lba2gen dev_path val <span class="o">[</span>val...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
  nvm_addr      off2gen dev_path val <span class="o">[</span>val...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
+ nvm_addr      lpo2gen dev_path val <span class="o">[</span>val...<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
 
 Options:
  -h       Print usage
  -v       Dump CLI state to stdout
- -i  FILE Path to input file
- -o  FILE Path to output file
 
 See: http://lightnvm.io/liblightnvm/cli/ <span class="k">for</span> usage examples
 </pre></div>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">See section <a class="reference internal" href="nvm_env.html#sec-cli-env"><span>Environment Variables</span></a> for a full list of environment
+<p class="last">See section <a class="reference internal" href="nvm_env.html#sec-cli-env"><span class="std std-ref">Environment Variables</span></a> for a full list of environment
 variables modifying command behavior</p>
 </div>
 <div class="section" id="address-formats">
 <h2>Address Formats<a class="headerlink" href="#address-formats" title="Permalink to this headline">¶</a></h2>
-<p>The command-line parameter <code class="docutils literal"><span class="pre">0xADDR</span></code> is a textual hexadecimal representation
+<p>The command-line parameter <code class="docutils literal notranslate"><span class="pre">0xADDR</span></code> is a textual hexadecimal representation
 of a physical address in generic format.</p>
 <div class="section" id="generic-format">
 <h3>Generic Format<a class="headerlink" href="#generic-format" title="Permalink to this headline">¶</a></h3>
 <p>The relative location in device geometry can be used to construct physical
-address in generic format, e.g. channel(2), LUN(1), plane(0), blk(10),
-page(200), sector(2):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr from_geo /dev/nvme0n1 <span class="m">2</span> <span class="m">1</span> <span class="m">0</span> <span class="m">10</span> <span class="m">200</span> <span class="m">2</span>
+address in generic format, e.g. pugrp(2), punit(1), chunk(0), sectr(10):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_addr s20_to_gen /dev/nvme0n1 <span class="m">4</span> <span class="m">2</span> <span class="m">142</span> <span class="m">0</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>0x0201000200c8000a: <span class="o">{</span>ch: <span class="m">02</span>, lun: <span class="m">01</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">200</span>, sec: <span class="m">2</span><span class="o">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>naddrs: <span class="m">1</span>
+addrs:
+  - <span class="o">{</span>val: 0x0402008e00000000, pugrp: <span class="m">04</span>, punit: <span class="m">02</span>, chunk: <span class="m">0142</span>, sectr: <span class="m">0000</span><span class="o">}</span>
 </pre></div>
 </div>
 </div>
@@ -224,98 +222,12 @@ page(200), sector(2):</p>
 <h3>Device Format<a class="headerlink" href="#device-format" title="Permalink to this headline">¶</a></h3>
 <p>A physical address in device format can be construct from the physical address
 in generic format:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr gen2dev /dev/nvme0n1 0x0201000200c8000a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvm_addr gen2dev /dev/nvme0n1 0x020100000000000a
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>gen: 0x0201000200c8000a: <span class="o">{</span>ch: <span class="m">02</span>, lun: <span class="m">01</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">200</span>, sec: <span class="m">2</span><span class="o">}</span>
-dev: 0x000000000440a642
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen: 0x020100000000000a, dev: 0x000000000900000a
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="submitting-io">
-<h2>Submitting IO<a class="headerlink" href="#submitting-io" title="Permalink to this headline">¶</a></h2>
-<p>Four commands are provided for constructing read / write commands. The
-write-command use a synthetic payload in the form of a repeating sequence of
-chars A-Z.</p>
-<dl class="docutils">
-<dt>write</dt>
-<dd>Perform a write of data using a synthetic payload at the given addresses</dd>
-<dt>write_wm</dt>
-<dd>Perform a write of data and meta-data (out-of-bound area) using a synthetic
-payload at the given addresses</dd>
-<dt>read</dt>
-<dd>Perform a read of data at the given addresses</dd>
-<dt>read_wm</dt>
-<dd>Perform a read of data and meta-data (out-of-bound area) at the given
-addresses addresses</dd>
-</dl>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Commands by default expects plane-hint, however, it can be disabled</p>
-</div>
-<p>Perform a command without plane-hint by setting the environment var
-<code class="docutils literal"><span class="pre">NVM_CLI_PMODE=&quot;0&quot;</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">NVM_CLI_PMODE</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> nvm_addr <span class="nb">read</span> /dev/nvme0n1 <span class="se">\</span>
-0x000000000064000a 0x000000010064000a 0x000000020064000a 0x000000030064000a
-</pre></div>
-</div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_read: {pmode: SNGL}</span>
-0x000000000064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">0</span><span class="o">}</span>
-0x000000010064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">1</span><span class="o">}</span>
-0x000000020064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">2</span><span class="o">}</span>
-0x000000030064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">3</span><span class="o">}</span>
-</pre></div>
-</div>
-<p>With plane-hint enabled perform a read command consisting of eight addresses:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr <span class="nb">read</span> /dev/nvme0n1 <span class="se">\</span>
-0x000000000064000a 0x000000010064000a 0x000000020064000a 0x000000030064000a <span class="se">\</span>
-0x000001000064000a 0x000001010064000a 0x000001020064000a 0x000001030064000a
-</pre></div>
-</div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_read: {pmode: DUAL}</span>
-0x000000000064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">0</span><span class="o">}</span>
-0x000000010064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">1</span><span class="o">}</span>
-0x000000020064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">2</span><span class="o">}</span>
-0x000000030064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">3</span><span class="o">}</span>
-0x000001000064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">1</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">0</span><span class="o">}</span>
-0x000001010064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">1</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">1</span><span class="o">}</span>
-0x000001020064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">1</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">2</span><span class="o">}</span>
-0x000001030064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">1</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">3</span><span class="o">}</span>
-</pre></div>
-</div>
-<p>Use the <code class="docutils literal"><span class="pre">-o</span> <span class="pre">FILE</span></code> option, to dump the data read from device to file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nvm_addr <span class="nb">read</span> /dev/nvme0n1 <span class="se">\</span>
-0x000000000064000a 0x000000010064000a 0x000000020064000a 0x000000030064000a <span class="se">\</span>
-0x000001000064000a 0x000001010064000a 0x000001020064000a 0x000001030064000a <span class="se">\</span>
--o /tmp/nvm_dump.bin
-</pre></div>
-</div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># nvm_addr_read: {pmode: DUAL}</span>
-0x000000000064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">0</span><span class="o">}</span>
-0x000000010064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">1</span><span class="o">}</span>
-0x000000020064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">2</span><span class="o">}</span>
-0x000000030064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">0</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">3</span><span class="o">}</span>
-0x000001000064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">1</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">0</span><span class="o">}</span>
-0x000001010064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">1</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">1</span><span class="o">}</span>
-0x000001020064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">1</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">2</span><span class="o">}</span>
-0x000001030064000a: <span class="o">{</span>ch: <span class="m">00</span>, lun: <span class="m">00</span>, pl: <span class="m">1</span>, blk: <span class="m">0010</span>, pg: <span class="m">100</span>, sec: <span class="m">3</span><span class="o">}</span>
-</pre></div>
-</div>
-<p>Which can then be inspected with for example <code class="docutils literal"><span class="pre">hexdump</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>hexdump /tmp/nvm_dump.bin -C -n <span class="m">128</span>
-</pre></div>
-</div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">00000000</span>  4d 4e 4f <span class="m">50</span> <span class="m">51</span> <span class="m">52</span> <span class="m">53</span> <span class="m">54</span>  <span class="m">55</span> <span class="m">56</span> <span class="m">57</span> <span class="m">58</span> <span class="m">59</span> 5a <span class="m">41</span> <span class="m">42</span>  <span class="p">|</span>MNOPQRSTUVWXYZAB<span class="p">|</span>
-<span class="m">00000010</span>  <span class="m">43</span> <span class="m">44</span> <span class="m">45</span> <span class="m">46</span> <span class="m">47</span> <span class="m">48</span> <span class="m">49</span> 4a  4b 4c 4d 4e 4f <span class="m">50</span> <span class="m">51</span> <span class="m">52</span>  <span class="p">|</span>CDEFGHIJKLMNOPQR<span class="p">|</span>
-<span class="m">00000020</span>  <span class="m">53</span> <span class="m">54</span> <span class="m">55</span> <span class="m">56</span> <span class="m">57</span> <span class="m">58</span> <span class="m">59</span> 5a  <span class="m">41</span> <span class="m">42</span> <span class="m">43</span> <span class="m">44</span> <span class="m">45</span> <span class="m">46</span> <span class="m">47</span> <span class="m">48</span>  <span class="p">|</span>STUVWXYZABCDEFGH<span class="p">|</span>
-<span class="m">00000030</span>  <span class="m">49</span> 4a 4b 4c 4d 4e 4f <span class="m">50</span>  <span class="m">51</span> <span class="m">52</span> <span class="m">53</span> <span class="m">54</span> <span class="m">55</span> <span class="m">56</span> <span class="m">57</span> <span class="m">58</span>  <span class="p">|</span>IJKLMNOPQRSTUVWX<span class="p">|</span>
-<span class="m">00000040</span>  <span class="m">59</span> 5a <span class="m">41</span> <span class="m">42</span> <span class="m">43</span> <span class="m">44</span> <span class="m">45</span> <span class="m">46</span>  <span class="m">47</span> <span class="m">48</span> <span class="m">49</span> 4a 4b 4c 4d 4e  <span class="p">|</span>YZABCDEFGHIJKLMN<span class="p">|</span>
-<span class="m">00000050</span>  4f <span class="m">50</span> <span class="m">51</span> <span class="m">52</span> <span class="m">53</span> <span class="m">54</span> <span class="m">55</span> <span class="m">56</span>  <span class="m">57</span> <span class="m">58</span> <span class="m">59</span> 5a <span class="m">41</span> <span class="m">42</span> <span class="m">43</span> <span class="m">44</span>  <span class="p">|</span>OPQRSTUVWXYZABCD<span class="p">|</span>
-<span class="m">00000060</span>  <span class="m">45</span> <span class="m">46</span> <span class="m">47</span> <span class="m">48</span> <span class="m">49</span> 4a 4b 4c  4d 4e 4f <span class="m">50</span> <span class="m">51</span> <span class="m">52</span> <span class="m">53</span> <span class="m">54</span>  <span class="p">|</span>EFGHIJKLMNOPQRST<span class="p">|</span>
-<span class="m">00000070</span>  <span class="m">55</span> <span class="m">56</span> <span class="m">57</span> <span class="m">58</span> <span class="m">59</span> 5a <span class="m">41</span> <span class="m">42</span>  <span class="m">43</span> <span class="m">44</span> <span class="m">45</span> <span class="m">46</span> <span class="m">47</span> <span class="m">48</span> <span class="m">49</span> 4a  <span class="p">|</span>UVWXYZABCDEFGHIJ<span class="p">|</span>
-<span class="m">00000080</span>
-</pre></div>
 </div>
 </div>
 </div>
@@ -328,10 +240,10 @@ addresses addresses</dd>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="nvm_vblk.html" class="btn btn-neutral float-right" title="nvm_vblk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nvm_cmd.html" class="btn btn-neutral float-right" title="nvm_cmd" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nvm_bbt.html" class="btn btn-neutral" title="nvm_bbt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nvm_dev.html" class="btn btn-neutral" title="nvm_dev" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -367,7 +279,7 @@ addresses addresses</dd>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
