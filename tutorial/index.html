@@ -26,10 +26,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Obtaining device information" href="nvm_dev.html" />
-    <link rel="prev" title="Public Header" href="../capi/header.html" /> 
+    <link rel="prev" title="Background" href="../background/index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,9 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../prereqs/index.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/index.html">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial Introduction</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Tutorial Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="nvm_dev.html">Obtaining device information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_addr.html">Physical Addressing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nvm_addr_vio.html">Vectorized IO to NAND media</a></li>
@@ -96,6 +92,8 @@
 <li class="toctree-l2"><a class="reference internal" href="nvm_bbt.html">Bad-Block-Table</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/index.html">References</a></li>
 </ul>
 
@@ -148,7 +146,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tutorial/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorial/index.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,12 +166,8 @@ physical addresses, issue vectorized IO, retrieve and mange media state, and
 introduce the virtual block abstraction.</p>
 <p>It will be using the command-line interface (CLI), and provide notes for the
 corresponding parts of the C API. It is assumed throughout that an Open-Channel
-SSD available at the path <code class="docutils literal notranslate"><span class="pre">/dev/nvme0n1</span></code> and that liblightnvm is installed on
+SSD available at the path <code class="docutils literal"><span class="pre">/dev/nvme0n1</span></code> and that liblightnvm is installed on
 the system.</p>
-<p>NOTE: This tutorial was written prior to the release of the Open-Channel SSD
-2.0 specification. Concept such as <strong>planes/plane-mode</strong>, thus, if you have a
-2.0 drive then ignore such terms and have a look at the CLI documentation for
-examples of device geometry and address construction.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -189,7 +183,7 @@ examples of device geometry and address construction.</p>
         <a href="nvm_dev.html" class="btn btn-neutral float-right" title="Obtaining device information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../capi/header.html" class="btn btn-neutral" title="Public Header" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../background/index.html" class="btn btn-neutral" title="Background" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -225,7 +219,7 @@ examples of device geometry and address construction.</p>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
