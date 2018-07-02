@@ -93,11 +93,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#failure-modes">Failure Modes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#terminology">Terminology</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command-Line Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../capi/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backends/index.html">Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/index.html">References</a></li>
 </ul>
 
@@ -253,6 +255,66 @@ over time due to a defect. In that case, all its data will be lost unless
 RAID or other replication techniques has been used.</dd>
 </dl>
 </div>
+</div>
+<div class="section" id="terminology">
+<span id="sec-terminology"></span><h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<p>Mostly, the terms used in liblightnvm are directly mapped to the OCSSD
+specification(s). However, since the specifications have changed naming from
+1.2 to 2.0, then a brief overview is provided here for reference as what a
+liblightnvm term maps to in specifications.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="29%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">liblightnvm</th>
+<th class="head">OCSSD 1.2</th>
+<th class="head">OCSSD 2.0</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PUGRP</td>
+<td>Channel</td>
+<td>Parallel Unit Group</td>
+</tr>
+<tr class="row-odd"><td>PUNIT</td>
+<td>LUN / die</td>
+<td>Parallel Unit</td>
+</tr>
+<tr class="row-even"><td>CHUNK</td>
+<td>Block</td>
+<td>Chunk</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>Plane</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>Page</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>SECTR</td>
+<td>Sector</td>
+<td>Logical Block</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that from 1.2 to 2.0, the concept of BLOCK / PLANE / PAGE  is ‘squashed’
+into Chunk / Logical Block, however, liblightnvm refers to this as CHUNK/SECTR.</p>
 </div>
 </div>
 

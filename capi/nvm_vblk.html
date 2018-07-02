@@ -95,6 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nvm_cmd.html">nvm_cmd - Raw Commands</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">nvm_vblk - Virtual Block</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-vblk">nvm_vblk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nvm-vblk-copy">nvm_vblk_copy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-vblk-erase">nvm_vblk_erase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-vblk-pread">nvm_vblk_pread</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nvm-vblk-read">nvm_vblk_read</a></li>
@@ -121,6 +122,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backends/index.html">Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs/index.html">References</a></li>
 </ul>
 
@@ -203,6 +205,20 @@
 <dd><a class="reference internal" href="#liblightnvm_8h_1aa63a092d2f015a4645dab88c70ec6f10"><span class="std std-ref">nvm_vblk_alloc</span></a> </dd>
 <dt><strong>See</strong></dt>
 <dd><a class="reference internal" href="#liblightnvm_8h_1a2fe8c7aced82ea70540457c9ee725d69"><span class="std std-ref">nvm_vblk_alloc_line</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nvm-vblk-copy">
+<h2>nvm_vblk_copy<a class="headerlink" href="#nvm-vblk-copy" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="c.nvm_vblk_copy">
+<span class="target" id="liblightnvm_8h_1a8878d2bad6814bd70bad15785873b08c"></span>ssize_t <code class="descname">nvm_vblk_copy</code><span class="sig-paren">(</span>struct  <a class="reference internal" href="#c.nvm_vblk" title="nvm_vblk">nvm_vblk</a>  *<em>&nbsp;src</em>, struct  <a class="reference internal" href="#c.nvm_vblk" title="nvm_vblk">nvm_vblk</a>  *<em>&nbsp;dst</em>, int<em>&nbsp;flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.nvm_vblk_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the virtual block ‘src’ to the virtual block ‘dst’. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>On success, the number of bytes copied is returned. On error, -1 is returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> set to indicate the error. </dd>
 </dl>
 </p>
 </dd></dl>

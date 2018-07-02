@@ -50,6 +50,7 @@ Contents:
    cli/index.rst
    capi/index.rst
    tutorial/index.rst
+   backends/index.rst
    refs/index.rst
 
 Indices and tables

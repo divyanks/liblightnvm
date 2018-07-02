@@ -13,16 +13,11 @@ corresponding parts of the C API. It is assumed throughout that an Open-Channel
 SSD available at the path ``/dev/nvme0n1`` and that liblightnvm is installed on
 the system.
 
-NOTE: This tutorial was written prior to the release of the Open-Channel SSD
-2.0 specification. Concept such as **planes/plane-mode**, thus, if you have a
-2.0 drive then ignore such terms and have a look at the CLI documentation for
-examples of device geometry and address construction.
+**Important** the tutorial is split between the Open-Channel 1.2 and the
+Open-Channel 2.0 specification.
 
 .. toctree::
    :hidden:
 
-   nvm_dev.rst
-   nvm_addr.rst
-   nvm_addr_vio.rst
-   nvm_vblk.rst
-   nvm_bbt.rst
+   tutorial-s20/index.rst
+   tutorial-s12/index.rst
