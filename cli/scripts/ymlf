@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+"""
+    Utility to conveniently access/filter the output of the liblightnvm CLI
+
+    Output structs:
+
+    CMD | ./ymlf <STRUCT>
+
+    Output attributes:
+
+    CMD | ./ymlf <STRUCT.ATTR>
+
+    E.g. extract device properties:
+
+    sudo nvm_dev info /dev/nvme0n1 | ./ymlf dev_attr.verid
+
+    It is often preferred to get the data once, then filter on that:
+
+    NVM_DEV_INFO=$(sudo nvm_dev info /dev/nvme0n1)
+
+    echo "$NVM_DEV_INFO" | ./ymlf dev_attr.verid
+    echo "$NVM_DEV_INFO" | ./ymlf dev_attr.erase_naddrs_max
+
+    Exit-code is 0 on success and attribute output stdout
+    Exit-code is != 0 on error and error message on stderr
+
+    NOTE: install Python the python-yaml library to use this utility
+"""
+from __future__ import print_function
+import argparse
+import pprint
+import sys
+try:
+    import yaml
+except ImportError as exc:
+    print("# Install the Python YAML library ERR: '%s'" % exc, file=sys.stderr)
+    sys.exit(1)
+
+def main(args):
+    """Read from STDIN and convert to yaml"""
+
+    lines = []
+
+    for line in sys.stdin.readlines():
+        lines.append(line.rstrip())
+
+    try:
+        yml = yaml.load("\n".join(lines))
+    except yaml.scanner.ScannerError as err:
+        print("# invalid yaml, ERR: '%s'" % err, file=sys.stderr)
+        return 1
+
+    if args.attr:
+        tree = args.attr.split(".")
+        for attr in tree:
+            if attr not in yml:
+                print("# invalid attr: '%s'" % args.attr, file=sys.stderr)
+                return 1
+
+            yml = yml[attr]
+
+    if type(yml) is dict:
+        print(yaml.dump(yml, default_flow_style=False, indent=2))
+    else:
+        print(yml)
+
+    return 0
+
+if __name__ == "__main__":
+
+    PRSR = argparse.ArgumentParser(description='Converts STDIN to YAML')
+    PRSR.add_argument(
+        'attr',
+        nargs='?',
+        help='attribute to output from YAML struct'
+    )
+
+    sys.exit(main(PRSR.parse_args()))
