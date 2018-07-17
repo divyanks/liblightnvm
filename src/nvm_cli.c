@@ -1256,7 +1256,11 @@ void nvm_cli_usage_pr(struct nvm_cli *cli)
 
 	if (cli->title) {
 		printf("%s -- ", cli->title);
-		nvm_ver_pr();
+		if (cli->ver_pr) {
+			cli->ver_pr();
+		} else {
+			nvm_ver_pr();
+		}
 		printf("\n");
 	}
 
